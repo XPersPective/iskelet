@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'hivboxes.dart';
+part of 'hiveboxes.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator

@@ -2,18 +2,10 @@
 
 library iskelet_hive;
 
-// import 'dart:io';
+export 'hiveboxes.dart';
 
 import 'package:hive_flutter/hive_flutter.dart';
-
-// import 'package:path_provider/path_provider.dart';
-
-// import 'package:path/path.dart' as p;
-
-import 'hivboxes.dart';
-
-// ignore: unused_element
-// final _init = SrHive.instance..init();
+import 'hiveboxes.dart';
 
 enum HiveTableShort { ByGroup, ById }
 enum HiveTableOrder { ASC, DESC }
@@ -37,33 +29,6 @@ class SrHive {
     _boxDB = await Hive.openBox<HiveEntity>('hivedb');
     _isInit = true;
   }
-
-  // Future<void> init() async {
-  //   // if (_isInit) return;
-
-  //   ///init hiv
-  //   //  Directory appDocDir = await getApplicationDocumentsDirectory();
-  //   //    Hive.init(appDocDir.path);
-  //   Directory appDocDir = await getApplicationDocumentsDirectory();
-
-  //   // SrPath.instance.current.join('packages').join('iskelet_hive').join('assets');
-  //   // Hive.init(appDocDir.path);
-
-  //   await Hive.initFlutter(p.join(p.current,'packages', 'iskelet_hive', 'assets'));
-
-  //   Hive.registerAdapter(HiveEntityAdapter());
-  //   // await Hive.initFlutter();
-
-  //   // /// open boxes
-  //   // if (Hive.isBoxOpen('HiveEntity')) {
-  //   //   _box = Hive.box('HiveEntity');
-  //   // }
-
-  //   _boxDB = await Hive.openBox<HiveEntity>(
-  //     'hivedb',
-  //   );
-  //   _isInit = true;
-  // }
 
   Future<HiveEntity> write(HiveEntity entity) async {
     if (entity.data['id'] == null) {
@@ -148,13 +113,7 @@ class SrHive {
 
   List<List<HiveEntity>> getGoups(String tableName, {HiveTableOrder orderBy = HiveTableOrder.ASC}) {
     List<int> groupIds = getGroupIds(tableName, orderBy: orderBy);
-
     return groupIds.map((groupId) => getByGroupId(tableName, groupId)).toList();
-    // List<List<HiveEntity>> l = [];
-    // for (var groupId in groupIds) {
-    //   var entities = getByGroupId(tableName, groupId);
-    //   l.add(entities);
-    // }
   }
 
   List<int> getGroupIds(String tableName, {HiveTableOrder orderBy = HiveTableOrder.ASC}) {
@@ -185,61 +144,6 @@ class SrHive {
   bool contains(int index) => _box.containsKey(index);
 
   Future<void> closeDb() async => await _box.close();
+
   Future<void> deleteFromDisk() async => await _box.deleteFromDisk();
 }
-
-// await Hive.initFlutter(); ilk kez yukle
-
-// var box = Hive.box('myBox');zaten  açılmış olana hemen eriş
-
-// var box = await Hive.openBox('myBox');
-// await box.put('hello', 'world');
-// await box.close();
-
-// Okuma
-// var box = Hive.box('myBox');
-
-// String name = box.get('name');
-
-// DateTime birthday = box.get('birthday');
-
-// flutter packages pub run build_runner build
-
-// void main() async {
-//   // Register Adapter
-//   Hive.registerAdapter(UserAdapter());
-
-//   var box = await Hive.openBox<User>('userBox');
-
-//   box.put('david', User('David'));
-//   box.put('sandy', User('Sandy'));
-
-//   print(box.values);
-// }
-// jj() {
-//   var flutter = [
-//     HiveEntity(tableName: chart, groupId: 0, data: {
-//       id: 0,
-//       name: Candile,
-//       showLabels: true,
-//       showSelectedValueLine: true,
-//       isLine: false,
-//       openPriceSupportPeriod: 14,
-//       openPriceResistancePeriod: 14,
-//       closePriceSupportPeriod: 14,
-//       closePriceResistancePeriod: 14,
-//       highPriceSupportPeriod: 14,
-//       highPriceResistancePeriod: 14,
-//       lowPriceSupportPeriod: 14,
-//       lowPriceResistancePeriod: 14,
-//       openPriceSupportColor: 4294198070,
-//       openPriceResistanceColor: 4294198070,
-//       closePriceSupportColor: 4294198070,
-//       closePriceResistanceColor: 4294198070,
-//       highPriceSupportColor: 4294198070,
-//       highPriceResistanceColor: 4294198070,
-//       lowPriceSupportColor: 4294198070,
-//       lowPriceResistanceColor: 4294198070
-//     })
-//   ];
-// }
