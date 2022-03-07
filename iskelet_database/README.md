@@ -1,21 +1,16 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+## Projeye Dahil Etme
+ - Bu paket import edilmez.
+ - İki şekilde kullanılabilir.
+    1. Peketi olduğu gibi projeye kopyalayarak.
+    2. Yada
+        - Yeni bir dart paketi oluşturup
+        - Tüm src yi ve SrDatabase sınıfını bu pakete kopyalayarak kullanılabilir.
+ - 
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
 
 ## Kullanımı
 
- - ICoreDatabase e ihtiyaç duyulan metodları ekle.
- - İhtiyaç duyulan databaseleri (Local, Remote) yaz.
- - SrDatabase e uygula.
+ - ICoreDatabase e ihtiyaç duyulan metodlar eklenir(abstract).
+ - İhtiyaç duyulan databaseler (Local, Remote) ugulanır.
+ - SrDatabase e uygulanır.
