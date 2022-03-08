@@ -1,6 +1,6 @@
-import '../../core/idatabase.dart';
+import '../../core/ilocaldatabase.dart';
 
-class LocalDatabaseDrift implements IDatabase {
+class LocalDatabaseDrift implements IlocalDatabase {
   @override
   Future<void> init() {
     // TODO: implement init

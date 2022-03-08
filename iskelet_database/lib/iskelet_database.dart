@@ -1,16 +1,22 @@
 library iskelet_database;
 
-import 'src/core/icoredatabase.dart';
-import 'src/core/idatabase.dart';
 export 'src/ex.dart';
 
-class SrDatabase implements ICoreDatabase {
-  SrDatabase(IDatabase database) : _db = database;
+import 'src/core/icoredatabase.dart';
+import 'src/core/isrdatabase.dart';
 
-  final IDatabase _db;
+class SrDatabase implements ICoreDatabase {
+  factory SrDatabase.appInit(ISrDatabase database) => instance = SrDatabase._(database);
+
+  final ISrDatabase _db;
+
+  static late final SrDatabase instance;
+
+  SrDatabase._(ISrDatabase database) : _db = database;
 
   @override
-  Future<void> init() async {
-    await _db.init();
+  Future<void> init() {
+    // TODO: implement init
+    throw UnimplementedError();
   }
 }

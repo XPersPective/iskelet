@@ -12,5 +12,6 @@
 ## Kullanımı
 
  - ICoreDatabase e ihtiyaç duyulan metodlar eklenir(abstract).
- - İhtiyaç duyulan databaseler (Local, Remote) ugulanır.
- - SrDatabase e uygulanır.
+ - İhtiyaç duyulan databaseler (ILocal, IRemote,SrDatabaseReal,SrDatabaseMock)a ugulanır.
+ - SrDatabase i uygulamanın başında SrDatabase.appInit(ISrDatabase database) çaşrılır.
+ - Uygulanaın her yerinden SrDatabase.instance ile erişilir.

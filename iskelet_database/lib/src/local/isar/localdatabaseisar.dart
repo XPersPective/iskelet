@@ -1,6 +1,9 @@
-import '../../core/idatabase.dart';
+ 
 
-class LocalDatabaseIsar implements IDatabase {
+import '../../core/ilocaldatabase.dart';
+
+ 
+class LocalDatabaseIsar implements IlocalDatabase {
   @override
   Future<void> init() {
     // TODO: implement init
