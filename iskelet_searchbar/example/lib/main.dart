@@ -48,7 +48,13 @@ class WpHome extends StatelessWidget {
             'STEEMUSDT'
           ],
           listItemTitle: (value) => Text(value),
-          title: (value) => Text(value),
+          title: (value) => ListTile(
+            title: Text(value),
+            leading: const Icon(
+              Icons.arrow_drop_down_sharp,
+              color: Colors.grey,
+            ),
+          ),
         ),
       ),
     );

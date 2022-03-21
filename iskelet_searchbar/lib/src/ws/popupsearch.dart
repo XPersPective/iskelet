@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:signal/signal.dart';
 
@@ -8,6 +7,7 @@ import 'searchbar.dart';
 class PopupSearch extends StatelessWidget {
   const PopupSearch({
     Key? key,
+    this.searchBarisUpperCase = false,
     required this.items,
     required this.initialValue,
     this.searchBarBackIcon,
@@ -17,7 +17,10 @@ class PopupSearch extends StatelessWidget {
     this.listItemSubtitle,
     this.listItemTrailing,
     this.listItemHeight,
+    this.onChanged,
   }) : super(key: key);
+
+  final bool searchBarisUpperCase;
 
   final List<String> Function() items;
   final String initialValue;
@@ -33,6 +36,9 @@ class PopupSearch extends StatelessWidget {
   final Widget Function(String value)? listItemTrailing;
 
   final double? listItemHeight;
+
+  final void Function(String value)? onChanged;
+
   @override
   Widget build(BuildContext context) {
     return ChannelProvider<ChannelSearchBar>(
@@ -64,9 +70,10 @@ class PopupSearch extends StatelessWidget {
                               ),
                         title: SearchBar(
                           initialValue: channel.value,
-                          isUpperCase: true,
+                          isUpperCase: searchBarisUpperCase,
                           onChanged: (value) {
                             channel.query = value;
+
                             setState(() {});
                           },
                         ),
@@ -83,10 +90,10 @@ class PopupSearch extends StatelessWidget {
                                 trailing: listItemTrailing?.call(result),
                                 subtitle: listItemSubtitle?.call(result),
                                 onTap: () {
-                                  // ChannelProvider.of<ChannelSearchBar>(buildercontext).addQuery(result);
                                   setState(() {
                                     channel.value = result;
                                   });
+                                  onChanged?.call(channel.value);
                                   Navigator.pop(context);
                                 },
                               ),
@@ -101,9 +108,5 @@ class PopupSearch extends StatelessWidget {
         },
       ),
     );
-    //   ],
-    // );
-    //   },
-    // );
   }
 }
