@@ -61,7 +61,8 @@ class _WsDatePickerState extends State<WsDatePicker> {
   final List<int> sixty = List<int>.generate(60, (i) => i);
   final List<int> thousand = List<int>.generate(1000, (i) => i);
 
-  List<int> days(int year, int month) => List<int>.generate(24, (i) => i + 1);
+  List<int> days(int year, int month) => List<int>.generate(DateTime(year, month + 1, 0).day, (i) => i + 1);
+
 
   Color? get iconColor {
     if (widget.titleStyle?.color != null) return Color(widget.titleStyle!.color!.value);
